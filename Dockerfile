@@ -8,6 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     apache2 \
     && rm -rf /var/lib/apt/lists/*
+RUN echo "hello From Unnati KuCL 2.4" > /var/www/html/index.html 
 
 # Change Apache's default port from 80 to 8080
 RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf \
