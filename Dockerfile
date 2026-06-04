@@ -14,7 +14,17 @@ RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf \
     && sed -i 's/<VirtualHost \*:80>/<VirtualHost \*:8080>/' /etc/apache2/sites-available/000-default.conf
 
 # Overwrite the index.html page and set proper ownership
-RUN echo "hello From Unnati KuCL 2.3" > /var/www/html/index.html && \
+RUN echo "<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud Run Deployment</title>
+</head>
+<body>
+    <h1>CI/CD Pipeline Successful 🚀</h1>
+    <p>Application deployed using Jenkins, Google Artifact Registry, and Cloud Run.</p>
+    <p>Container image built, pushed to Artifact Registry, and automatically deployed to Cloud Run.</p>
+</body>
+</html>" > /var/www/html/index.html && \
     chown -R www-data:www-data /var/www/html
 
 # Inform Docker that the container listens on port 8080 at runtime
